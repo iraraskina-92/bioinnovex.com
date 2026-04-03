@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioInnovex — Turning Untapped International Opportunities Into Revenue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== BRAND COLORS ========== */
+    :root {
+      --blue: #3547E5;
+      --blue-dark: #2535c8;
+      --blue-light: #e8eaff;
+      --green: #3DC47E;
+      --green-dark: #2ea86a;
+      --green-light: #e6f9ef;
+      --white: #ffffff;
+      --gray-light: #f4f6ff;
+      --gray-mid: #8892b0;
+      --dark: #0d1232;
+      --dark-blue: #1a2255;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(53,71,229,0.08);
+      padding: 0 5%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(53,71,229,0.08);
+      transition: all 0.3s;
+    }
+    nav.scrolled {
+      height: 60px;
+      box-shadow: 0 4px 30px rgba(53,71,229,0.12);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 36px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #444;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: white !important;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      transition: all 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      min-height: 100vh;
+      background: #f8f9fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 5% 60px;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('hero-boy.jpg') center center / cover no-repeat;
+      filter: saturate(0.25) brightness(1.15);
+      opacity: 0.80;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(248,249,252,0.92) 0%, rgba(248,249,252,0.6) 50%, rgba(248,249,252,0.3) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 32px;
+      letter-spacing: -1.5px;
+    }
+    .hero-title .green { color: var(--green); }
+    .hero-title .blue { color: var(--blue); }
+    .hero-subtitle {
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      color: #444;
+      margin: 0 auto 44px;
+      line-height: 1.6;
+      max-width: 800px;
+      font-weight: 500;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(53,71,229,0.35); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--dark);
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid rgba(13,18,50,0.2);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); background: rgba(53,71,229,0.04); }
+
+    /* ========== SECTIONS COMMON ========== */
+    section { padding: 100px 5%; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-badge {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-mid);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ========== WHY NOW ========== */
+    #why-now { background: var(--gray-light); }
+    .why-now-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .why-now-text h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .why-now-text h3 .smart-rev { color: var(--green); display: block; font-size: 2.2rem; margin-top: 4px; }
+    .why-now-text p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .why-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .why-card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid rgba(53,71,229,0.08);
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(53,71,229,0.1); }
+    .why-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .why-card-icon.blue { background: var(--blue-light); color: var(--blue); }
+    .why-card-icon.green { background: var(--green-light); color: var(--green); }
+    .why-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+    .why-card p { font-size: 0.82rem; color: var(--gray-mid); line-height: 1.5; }
+
+    /* ========== OPENS NEW MARKETS ========== */
+    #opens-markets {
+      background: white;
+      overflow: hidden;
+    }
+    .opens-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(53,71,229,0.08);
+    }
+    .opens-left {
+      background: linear-gradient(135deg, rgba(168,180,255,0.85) 0%, rgba(200,208,255,0.8) 100%);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .opens-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('fibers-bg.jpg') center center / cover no-repeat;
+      opacity: 0.45;
+    }
+    .opens-left h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 32px;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .opens-point {
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .opens-point h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .opens-point p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+    .opens-right {
+      background: white;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .opens-right p {
+      font-size: 1.05rem;
+      color: var(--blue);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    @media (max-width: 900px) {
+      .opens-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== SERVICES ========== */
+    #services { background: #f0f2ff; position: relative; overflow: hidden; }
+    #services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('cells-bg.jpg') center center / cover no-repeat;
+      opacity: 0.60;
+    }
+    #services .container { position: relative; z-index: 1; }
+    #services .section-title { color: var(--blue); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid rgba(53,71,229,0.1);
+      border-radius: 16px;
+      padding: 36px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--blue);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(53,71,229,0.1); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .service-card:nth-child(2) .service-icon { background: var(--green-light); }
+    .service-card:nth-child(3) .service-icon { background: #fff3e6; }
+    .service-card:nth-child(4) .service-icon { background: #f0e6ff; }
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ========== METHOD ========== */
+    #method { background: var(--gray-light); }
+    .method-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .method-step {
+      flex: 1;
+      background: white;
+      padding: 32px 24px;
+      border-radius: 14px;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(53,71,229,0.08);
+      transition: all 0.3s;
+    }
+    .method-step:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(53,71,229,0.1); }
+    .method-step-number {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 0 auto 16px;
+    }
+    .method-step h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .method-step p {
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+    .method-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      color: var(--blue);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .model-traits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .model-trait {
+      text-align: center;
+      padding: 24px 16px;
+      background: white;
+      border-radius: 14px;
+      border: 1px solid rgba(53,71,229,0.08);
+    }
+    .model-trait-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--green);
+    }
+    .model-trait h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .model-trait p {
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+
+    #method .section-title { color: var(--blue); }
+
+    /* ========== INTERACTIVE MAP ========== */
+    #network {
+      background: #2654E5;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 60px;
+    }
+    #network .section-badge {
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+    #network .section-title { color: white; }
+    #network .section-subtitle { color: rgba(255,255,255,0.7); }
+
+    .map-container {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+    .map-bg {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    /* Use case cards positioned on map */
+    .map-cases-overlay {
+      position: absolute;
+      inset: 0;
+    }
+    .map-case {
+      position: absolute;
+      background: rgba(61,196,126,0.92);
+      backdrop-filter: blur(6px);
+      color: white;
+      border-radius: 8px;
+      padding: 7px 10px;
+      min-width: 120px;
+      max-width: 155px;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      font-size: 0;
+    }
+    .map-case:hover {
+      transform: scale(1.08);
+      z-index: 10;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+      background: rgba(61,196,126,0.98);
+    }
+    .map-case-area {
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 2px;
+      opacity: 0.9;
+    }
+    .map-case-desc {
+      font-size: 0.6rem;
+      line-height: 1.25;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+    /* Connector lines */
+    .map-case::after {
+      content: '';
+      position: absolute;
+      background: rgba(61,196,126,0.7);
+    }
+    .map-case.line-down::after {
+      width: 2px; height: 28px;
+      bottom: -28px; left: 50%; transform: translateX(-50%);
+    }
+    .map-case.line-up::after {
+      width: 2px; height: 28px;
+      top: -28px; left: 50%; transform: translateX(-50%);
+    }
+    .map-case.line-left::after {
+      width: 28px; height: 2px;
+      left: -28px; top: 50%; transform: translateY(-50%);
+    }
+    .map-case.line-right::after {
+      width: 28px; height: 2px;
+      right: -28px; top: 50%; transform: translateY(-50%);
+    }
+    .map-case.no-line::after { display: none; }
+
+    /* HQ marker */
+    .map-hq {
+      position: absolute;
+      z-index: 3;
+    }
+    .map-hq-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #3DC47E;
+      box-shadow: 0 0 12px rgba(61,196,126,0.6);
+      animation: hq-pulse 2.5s infinite;
+    }
+    @keyframes hq-pulse {
+      0%, 100% { box-shadow: 0 0 12px rgba(61,196,126,0.6); }
+      50% { box-shadow: 0 0 24px rgba(61,196,126,0.9), 0 0 48px rgba(61,196,126,0.3); }
+    }
+
+    .network-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .network-stat {
+      text-align: center;
+      padding: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+    }
+    .network-stat .num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #3DC47E;
+      display: block;
+    }
+    .network-stat .lbl {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+
+    /* ========== TRACK RECORD ========== */
+    #track-record { background: white; }
+    #track-record .section-title { color: var(--blue); }
+    .track-record-center {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .track-record-center .big-stat {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .track-record-center .big-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .track-card {
+      border-radius: 14px;
+      padding: 28px;
+      border: 1px solid rgba(53,71,229,0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      background: white;
+    }
+    .track-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(53,71,229,0.1); }
+    .track-card-header {
+      background: var(--blue);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .track-card-header.green-bg { background: var(--green); }
+    .track-card-header.dark-bg { background: var(--dark); }
+    .track-card-sub {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .track-card-info {
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .track-card-desc {
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.6;
+      border-top: 1px solid rgba(53,71,229,0.08);
+      padding-top: 12px;
+      margin-top: 8px;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+    }
+    #contact .section-badge {
+      background: rgba(61,196,126,0.18);
+      color: var(--green);
+    }
+    #contact .section-title { color: white; }
+    #contact .section-subtitle { color: rgba(255,255,255,0.6); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .contact-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--green);
+    }
+    .contact-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .contact-card a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-card a:hover { color: var(--green); }
+    .contact-cta {
+      margin-top: 48px;
+    }
+    .contact-cta .btn-primary {
+      font-size: 1.05rem;
+      padding: 16px 40px;
+    }
+    .opportunity-form { max-width: 620px; margin: 0 auto; }
+    .form-row {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .form-row input[type="email"] {
+      flex: 1;
+      padding: 14px 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-row input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .form-row input[type="email"]:focus { border-color: var(--green); }
+    .form-success {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 14px 24px;
+      background: rgba(61,196,126,0.15);
+      border-radius: 12px;
+      color: white;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 600px) {
+      .form-row { flex-direction: column; }
+    }
+
+    /* ========== CONTACT MODAL ========== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,18,50,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: white;
+      border-radius: 20px;
+      padding: 44px 40px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      font-size: 1.5rem; color: #999;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #333; }
+    .modal-box h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .modal-box .modal-sub {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 28px;
+    }
+    .modal-form label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .modal-form input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e5e7ef;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #333;
+      outline: none;
+      transition: border-color 0.3s;
+      margin-bottom: 16px;
+      font-family: inherit;
+    }
+    .modal-form input:focus { border-color: var(--blue); }
+    .modal-form input::placeholder { color: #bbb; }
+    .modal-form .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 16px;
+    }
+    .modal-form button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.3s;
+      font-family: inherit;
+    }
+    .modal-form button[type="submit"]:hover { background: #34b06e; }
+    .modal-success {
+      text-align: center;
+      padding: 20px 0;
+      display: none;
+    }
+    .modal-success svg { margin-bottom: 12px; }
+    .modal-success h4 { color: var(--blue); font-size: 1.2rem; margin-bottom: 8px; }
+    .modal-success p { color: #666; font-size: 0.9rem; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #f8f9fc;
+      padding: 30px 5%;
+      text-align: center;
+      color: #999;
+      font-size: 0.8rem;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-title { font-size: clamp(2rem, 5vw, 3rem); }
+      .why-now-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .method-flow { flex-direction: column; gap: 12px; }
+      .method-arrow { transform: rotate(90deg); justify-content: center; padding: 4px 0; }
+      .model-traits { grid-template-columns: repeat(2, 1fr); }
+      .track-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .network-stats { grid-template-columns: repeat(2, 1fr); }
+      .map-case { font-size: 0.65rem; min-width: 110px; max-width: 140px; padding: 7px 9px; }
+      .map-case-area { font-size: 0.58rem; }
+      .map-case-desc { font-size: 0.6rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; left: 0; right: 0;
+        background: white;
+        padding: 20px;
+        gap: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      }
+    }
+    @media (max-width: 600px) {
+      section { padding: 60px 5%; }
+      .hero-subtitle { font-size: 1rem; }
+      .why-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== NAVIGATION ====== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="bioinnovex-logo.png" alt="BioInnovex" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#why-now">Why Now</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#method">Our Approach</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#track-record">Track Record</a></li>
+    <li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1X8S5awvOrNNLR3COZWNP6WbP07qN0sjBeTgd1LtnT9B06HVuYqG1pRAg1KFpWdS8MktfHR0Bz?gv=true" target="_blank" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="green">You've Built Value.</span><br/>
+      <span class="blue">We Help You Unlock</span><br/>
+      <span class="blue">Its Full Potential</span>
+    </h1>
+    <p class="hero-subtitle">
+      We review your portfolio and open untapped markets for your pharma, biotech & medtech assets.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary" onclick="openContactModal(); return false;">Ask for Free Opportunity Mapping <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WHY NOW ====== -->
+<section id="why-now" class="fade-up">
+  <div class="container">
+    <div class="why-now-grid">
+      <div class="why-now-text">
+        <div class="section-badge">Strategic Opportunity</div>
+        <h3>Untapped Markets = <span class="smart-rev">Smart Revenue</span></h3>
+        <p>While core established markets remain valuable, they are increasingly exposed to regulatory, reimbursement, and competitive pressures. Emerging markets are gaining momentum — driven by strong demand, open competition, and faster access opportunities.</p>
+        <p>By accelerating time-to-revenue and leveraging our plug-and-play model, we help you secure scalable and sustainable growth.</p>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-card-icon blue">
+            <svg width="22" height="22" fill="none" stroke="#3547E5" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="9"/><path d="M11 7v4l3 3"/></svg>
+          </div>
+          <h4>Securing Global Revenues</h4>
+          <p>Reduce core market dependency</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon green">
+            <svg width="22" height="22" fill="none" stroke="#3DC47E" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 6-8"/></svg>
+          </div>
+          <h4>Strong Opportunity</h4>
+          <p>High demand, innovation-driven, fewer competitors</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon green">
+            <svg width="22" height="22" fill="none" stroke="#3DC47E" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h8l-1 6 10-12h-8z"/></svg>
+          </div>
+          <h4>Time to Revenue</h4>
+          <p>Fast-track launches, accelerate impact</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon blue">
+            <svg width="22" height="22" fill="none" stroke="#3547E5" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="3"/><circle cx="11" cy="11" r="9"/><path d="M11 2v3m0 12v3M2 11h3m12 0h3"/></svg>
+          </div>
+          <h4>Right Resources, Right Place</h4>
+          <p>Maximizing value, minimizing risk</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== OPENS NEW MARKETS ====== -->
+<section id="opens-markets" class="fade-up">
+  <div class="container">
+    <div class="opens-grid">
+      <div class="opens-left">
+        <h2>Bioinnovex Opens New Markets For Your Products</h2>
+        <div class="opens-point">
+          <h4>You Have Strong Portfolio</h4>
+          <p>Efficient processes, and a high-performing team.</p>
+        </div>
+        <div class="opens-point">
+          <h4>You Are Focused On Your Core Markets</h4>
+          <p>Where you are structured to succeed.</p>
+        </div>
+        <div class="opens-point">
+          <h4>You Keep Full Control Resources</h4>
+          <p>Expand internationally without the need for significant internal investment.</p>
+        </div>
+      </div>
+      <div class="opens-right">
+        <p>Our insights are built on real data, field intelligence, and tangible execution.</p>
+        <p>We anticipate market shifts, identify new revenue levers, and transform analysis into concrete market growth.</p>
+        <p>Through our proactive, hands-on approach, BIOINNOVEX delivers measurable impact — securing partnerships, accelerating access, and generating additional value across every stage of expansion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section id="services" class="fade-up">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">What We Do</div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Tailored programs to unlock your global potential.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Global Investment Evaluation</h3>
+        <p>We help investment funds unlock the global potential of their biotech and medtech portfolio through market due diligence, scalability assessments, and local access strategies — accelerating growth while reducing operational and regulatory risks.</p>
+      </div>
+      <div class="service-card">
+        <h3>Global Acceleration Program</h3>
+        <p>We identify high-potential markets, secure strategic access, and coordinate local execution to help pharma and biotech companies achieve scalable, sustainable growth.</p>
+      </div>
+      <div class="service-card">
+        <h3>Rare Disease Operational Expansion</h3>
+        <p>For companies focused on rare diseases aiming to broaden patient access globally, we oversee registration, coordinate logistics, and build strategic partnerships to deliver compliant, efficient, and high-impact product launches.</p>
+      </div>
+      <div class="service-card">
+        <h3>Mature & Generic Products Expansion</h3>
+        <p>For companies with established or registered products we open new markets, revitalize sales, and turn mature assets into fresh revenue streams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== METHOD ====== -->
+<section id="method" class="fade-up">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Our Approach</div>
+      <h2 class="section-title">From Opportunity to Revenue</h2>
+      <p class="section-subtitle">A seamless transition from strategy to execution, delivering measurable results on the ground.</p>
+    </div>
+    <div class="method-flow">
+      <div class="method-step">
+        <div class="method-step-number">1</div>
+        <h4>Feasibility Study</h4>
+        <p>Strategic mapping, opportunity screening, business case per region, risk assessment</p>
+      </div>
+      <div class="method-arrow">&#10140;</div>
+      <div class="method-step">
+        <div class="method-step-number">2</div>
+        <h4>Operational Set Up</h4>
+        <p>Market access & regulatory pathways, partner identification & negotiations, commercial coordination</p>
+      </div>
+      <div class="method-arrow">&#10140;</div>
+      <div class="method-step">
+        <div class="method-step-number">3</div>
+        <h4>Local Launch & Follow-Up</h4>
+        <p>On-the-ground execution with trusted partners, performance monitoring, ensuring sustainable sales</p>
+      </div>
+    </div>
+    <div class="model-traits">
+      <div class="model-trait">
+        <div class="model-trait-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h4>Fast</h4>
+        <p>Accelerating your time-to-revenue</p>
+      </div>
+      <div class="model-trait">
+        <div class="model-trait-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h4>Low Risk</h4>
+        <p>Transparent execution</p>
+      </div>
+      <div class="model-trait">
+        <div class="model-trait-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h4>Precise</h4>
+        <p>Customized market selection</p>
+      </div>
+      <div class="model-trait">
+        <div class="model-trait-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
+        <h4>Flexible</h4>
+        <p>Adapted to your level of involvement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== INTERACTIVE MAP ====== -->
+<section id="network">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Global Reach</div>
+      <h2 class="section-title">Network & Project Coverage</h2>
+      <p class="section-subtitle">Core focus: Eastern Europe, Turkey, Middle East, selected Africa/Asia, Australia</p>
+    </div>
+
+    <div class="map-container">
+      <img src="world-map.png" alt="Bioinnovex Global Network" class="map-bg" />
+
+      <div class="map-cases-overlay">
+        <!-- HQ dots -->
+        <div class="map-hq" style="left:42.5%;top:27%;" title="Paris HQ"><div class="map-hq-dot"></div></div>
+        <div class="map-hq" style="left:44.5%;top:26%;" title="Basel HQ"><div class="map-hq-dot"></div></div>
+
+        <!-- 1. Spain — left of Iberian peninsula, line → right toward Spain (~38%,34%) -->
+        <div class="map-case line-right" style="left:23%;top:30%;">
+          <div class="map-case-area">Women's Health</div>
+          <div class="map-case-desc">Spain — Go to market, regulatory, commercial set up</div>
+        </div>
+
+        <!-- 2. Eastern Europe / Balkans — above Balkans (~47%,30%), line ↓ -->
+        <div class="map-case line-down" style="left:40%;top:5%;">
+          <div class="map-case-area">Neurology</div>
+          <div class="map-case-desc">Eastern Europe — GO to market, distributors, operations</div>
+        </div>
+
+        <!-- 3. Russia & CIS — above Russia (~60%,20%), line ↓ -->
+        <div class="map-case line-down" style="left:58%;top:5%;">
+          <div class="map-case-area">Rare Disease</div>
+          <div class="map-case-desc">Russia & CIS — Launch across 5 markets via distributors</div>
+        </div>
+
+        <!-- 4. Greece & Turkey — below Med (~50%,35%), line ↑ toward Greece/Turkey -->
+        <div class="map-case line-up" style="left:44%;top:46%;">
+          <div class="map-case-area">Allergy & Immunology</div>
+          <div class="map-case-desc">Greece & Turkey — 6 launches, market access</div>
+        </div>
+
+        <!-- 5. Israel, Nigeria, Namibia — right of Africa, line ← toward region -->
+        <div class="map-case line-left" style="left:57%;top:57%;">
+          <div class="map-case-area">Gastro / Cardio</div>
+          <div class="map-case-desc">Israel, Nigeria, Namibia — Operations kick-off</div>
+        </div>
+
+        <!-- 6. South Korea — near Korea (~78%,30%), line ← toward Korea -->
+        <div class="map-case line-left" style="left:84%;top:28%;">
+          <div class="map-case-area">Medtech</div>
+          <div class="map-case-desc">South Korea — Partnerships & sales expansion</div>
+        </div>
+
+        <!-- 7. Australia — below Australia (~80%,62%), line ↑ toward continent -->
+        <div class="map-case line-up" style="left:80%;top:74%;">
+          <div class="map-case-area">Medtech</div>
+          <div class="map-case-desc">Australia — Market penetration via partnerships</div>
+        </div>
+
+        <!-- 8. Latin America — below South America (~28%,55%), line ↑ toward continent -->
+        <div class="map-case line-up" style="left:22%;top:68%;">
+          <div class="map-case-area">Multiple Areas</div>
+          <div class="map-case-desc">Latin America — Market assessment & strategy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="network-stats">
+      <div class="network-stat">
+        <span class="num">17</span>
+        <span class="lbl">Locations</span>
+      </div>
+      <div class="network-stat">
+        <span class="num">35</span>
+        <span class="lbl">Distributors</span>
+      </div>
+      <div class="network-stat">
+        <span class="num">50+</span>
+        <span class="lbl">KOLs</span>
+      </div>
+      <div class="network-stat">
+        <span class="num">20+</span>
+        <span class="lbl">MA Experts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TRACK RECORD ====== -->
+<section id="track-record" class="fade-up">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Proven Results</div>
+      <h2 class="section-title">Trusted Experience — Proven Results</h2>
+      <p class="section-subtitle">References upon request</p>
+    </div>
+    <div class="track-record-center">
+      <div class="big-stat">20+</div>
+      <div class="big-label">Years of Value Creation</div>
+    </div>
+    <div class="track-grid">
+      <!-- Card 1 -->
+      <div class="track-card">
+        <span class="track-card-header">Ultra Rare Disease</span>
+        <div class="track-card-sub">Hepathology</div>
+        <p class="track-card-info">French biotech company, turnover up to $M500</p>
+        <p class="track-card-desc">Launch of rare disease therapies through targeted patient screening and national reimbursement programs.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="track-card">
+        <span class="track-card-header green-bg">Gastro, Cardio</span>
+        <div class="track-card-sub">Retail</div>
+        <p class="track-card-info">US pharm / medtech company, turnover over $1B</p>
+        <p class="track-card-desc">Business operations set up across selected markets, kick-off of operations in Israel, Nigeria, Namibia.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="track-card">
+        <span class="track-card-header">Allergy & Immunology</span>
+        <div class="track-card-sub">Specialty Care</div>
+        <p class="track-card-info">French pharma company, turnover up to $M500</p>
+        <p class="track-card-desc">Operations set up in Russia, Greece & Turkey, 6 product launches, market access strategy.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="track-card">
+        <span class="track-card-header">Medtech</span>
+        <div class="track-card-sub">Specialty Care</div>
+        <p class="track-card-info">US medtech & pharmaceutical company, turnover $M500</p>
+        <p class="track-card-desc">Business expansion in South Korea & Australia through local partnerships and a sales force.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="track-card">
+        <span class="track-card-header green-bg">Rare Disease</span>
+        <div class="track-card-sub">Oncology, Neuroscience</div>
+        <p class="track-card-info">French biopharma group, turnover over $1B</p>
+        <p class="track-card-desc">Assessment for licensing opportunities for orphan products and partnerships for a rare disease product.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="track-card">
+        <span class="track-card-header">Neurology</span>
+        <div class="track-card-sub">Specialty Care</div>
+        <p class="track-card-info">Swiss pharma company, turnover over $1B</p>
+        <p class="track-card-desc">GO to Market strategy, selection of local distributors, commercial operations across small countries.</p>
+      </div>
+      <!-- Card 7 -->
+      <div class="track-card">
+        <span class="track-card-header">Diagnostic Solutions</span>
+        <div class="track-card-sub">Hepatology, Hemostasis</div>
+        <p class="track-card-info">French Pharma & IVD company, turnover over M$500</p>
+        <p class="track-card-desc">Audit of distribution models across CIS markets. Optimized distribution strategies and improved operational efficiency.</p>
+      </div>
+      <!-- Card 8 -->
+      <div class="track-card">
+        <span class="track-card-header green-bg">Women's Health</span>
+        <div class="track-card-sub">Rx General Care</div>
+        <p class="track-card-info">Spanish pharma company, turnover over $1B</p>
+        <p class="track-card-desc">Go to market strategy, local regulatory approval and support, local commercial organisation set up.</p>
+      </div>
+      <!-- Card 9 -->
+      <div class="track-card">
+        <span class="track-card-header">Medical Device</span>
+        <div class="track-card-sub">Aesthetics</div>
+        <p class="track-card-info">Swiss pharma company, turnover around $M500</p>
+        <p class="track-card-desc">Restructured operations in Russia & CIS, transitioning from distributors to direct presence through a new go-to-market strategy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Let's Talk</div>
+      <h2 class="section-title">Ready to Unlock New Markets?</h2>
+      <p class="section-subtitle">Contact us to explore how we can turn your portfolio into global revenue.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4>Paris Office</h4>
+        <p><strong>Irina Raskina</strong></p>
+        <p style="margin-top:12px;"><a href="mailto:irina.raskina@bioinnovex.com">irina.raskina@bioinnovex.com</a></p>
+        <p><a href="tel:+33663170482">+33 6 63 17 04 82</a></p>
+      </div>
+      <div class="contact-card">
+        <h4>Basel Office</h4>
+        <p><strong>Leonid Parshenkov</strong></p>
+        <p style="margin-top:12px;"><a href="mailto:leonid.parshenkov@bioinnovex.com">leonid.parshenkov@bioinnovex.com</a></p>
+        <p><a href="tel:+41795084140">+41 79 508 41 40</a></p>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <a href="#" class="btn-primary" style="background:var(--green);" onclick="openContactModal(); return false;">Ask for Free Opportunity Mapping <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg></a>
+    </div>
+    <p style="margin-top:24px; font-size:0.9rem; color:rgba(255,255,255,0.5);">www.bioinnovex.com</p>
+  </div>
+</section>
+
+<!-- ====== CONTACT MODAL ====== -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeContactModal()">&times;</button>
+    <div id="modalFormContent">
+      <h3>Free Opportunity Mapping</h3>
+      <p class="modal-sub">Tell us about yourself and we'll send you the next steps to map your portfolio's international potential.</p>
+      <form class="modal-form" id="contactModalForm" onsubmit="return submitContactForm(event)">
+        <div class="form-grid">
+          <div>
+            <label for="mFirstName">First Name</label>
+            <input type="text" id="mFirstName" placeholder="e.g. John" required />
+          </div>
+          <div>
+            <label for="mLastName">Last Name</label>
+            <input type="text" id="mLastName" placeholder="e.g. Smith" required />
+          </div>
+        </div>
+        <label for="mPosition">Position</label>
+        <input type="text" id="mPosition" placeholder="e.g. VP Business Development" required />
+        <label for="mCompany">Company</label>
+        <input type="text" id="mCompany" placeholder="e.g. Acme Pharma" required />
+        <label for="mEmail">Professional Email</label>
+        <input type="email" id="mEmail" placeholder="e.g. john.smith@acmepharma.com" required />
+        <button type="submit">Ask for Free Opportunity Mapping</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <svg width="56" height="56" fill="none" stroke="var(--green)" stroke-width="2.5"><circle cx="28" cy="28" r="26"/><path d="M18 28l7 7 13-13"/></svg>
+      <h4>Thank you!</h4>
+      <p>Check your inbox — we've sent you the next steps to start your Opportunity Mapping.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <p>&copy; 2026 BioInnovex. All rights reserved.</p>
+</footer>
+
+<!-- ====== JAVASCRIPT ====== -->
+<script>
+  // Navigation scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Hamburger menu
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Counter animation for network stats
+  function animateCounters() {
+    document.querySelectorAll('.network-stat .num').forEach(el => {
+      const text = el.textContent;
+      const hasPlus = text.includes('+');
+      const num = parseInt(text.replace('+', ''));
+      let current = 0;
+      const step = Math.max(1, Math.floor(num / 30));
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= num) {
+          current = num;
+          clearInterval(interval);
+        }
+        el.textContent = current + (hasPlus ? '+' : '');
+      }, 30);
+    });
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsSection = document.querySelector('.network-stats');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  // ========== CONTACT MODAL ==========
+  function openContactModal() {
+    document.getElementById('contactModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeContactModal() {
+    document.getElementById('contactModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('contactModal').addEventListener('click', function(e) {
+    if (e.target === this) closeContactModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeContactModal();
+  });
+
+  // ========== CONTACT FORM — Google Apps Script ==========
+  // REMPLACE cette URL par celle de ton déploiement Google Apps Script
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxm2NUaoTbnMUDnLVWByFPwXod3eSkxhfax79TTJpMcJz5U7km5VjxvEC2ubo1hTw6igA/exec';
+
+  function submitContactForm(event) {
+    event.preventDefault();
+    const btn = event.target.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const data = {
+      firstName: document.getElementById('mFirstName').value,
+      lastName: document.getElementById('mLastName').value,
+      position: document.getElementById('mPosition').value,
+      company: document.getElementById('mCompany').value,
+      email: document.getElementById('mEmail').value,
+    };
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      document.getElementById('modalFormContent').style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      alert('An error occurred. Please contact us directly at irina.raskina@bioinnovex.com');
+    });
+
+    return false;
+  }
+</script>
+</body>
+</html>
